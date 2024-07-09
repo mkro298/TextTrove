@@ -16,3 +16,4 @@ aug 11 - aug 14 - front end
 aug 15 - aug 20 - deployment + fine tuning
 
 resources: 
+Pypdf or pypdf2 for text scraping

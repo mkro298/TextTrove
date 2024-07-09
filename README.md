@@ -17,3 +17,14 @@ aug 15 - aug 20 - deployment + fine tuning
 
 resources: 
 Pypdf or pypdf2 for text scraping
+
+summ: https://medium.com/@lokaregns/text-summarization-with-hugging-face-transformers-a-beginners-guide-9e6c319bb5ed
+
+questions: https://github.com/patil-suraj/question_generation?tab=readme-ov-file#question-generation-using-transformers
+
+extractive question answering - generate answer from context 
+
+question generation: https://huggingface.co/iarfmoose/t5-base-question-generator
+
+
+

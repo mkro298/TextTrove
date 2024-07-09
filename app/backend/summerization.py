@@ -6,18 +6,13 @@ from pprint import pprint
 
 import requests
 
-# URL of the file to download (modified for direct download)
 url = 'https://dl.dropboxusercontent.com/s/7hb8bwbtjmxovlc/bbc_text_cls.csv'
 
-# Send a GET request to the URL
 response = requests.get(url)
 
-# Check if the request was successful (status code 200)
 if response.status_code == 200:
-    # Specify the file path where you want to save the downloaded file
     file_path = 'bbc_text_cls.csv'
 
-    # Open the file in binary write mode and write the contents of the response
     with open(file_path, 'wb') as f:
         f.write(response.content)
 

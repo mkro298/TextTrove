@@ -41,6 +41,8 @@ def extract_chapters(file_name, toc, chapter_name):
             start = page_num - 1
             name = title
             heir = heirarchy
+    
+    raise ValueError("Chapter does not exist")
         
 
 def turn_into_pdf(start, end, doc, title):

@@ -2,8 +2,6 @@
 
 scope: site where user can upload their textbook PDF and get a chapter-by-chapter summerization then generated questions + answers quizzing them on each chapter. 
 
-either input by ctr V or upload pdf
-
 
 pdf scraping, question generation, text extraction, summerization 
 

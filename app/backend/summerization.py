@@ -4,10 +4,6 @@ import numpy as np
 import pandas as pd
 from pprint import pprint
 
-import requests
-
-#fine tune dataset for academic texts 
-#sciBert model 
 
 tokenizer = AutoTokenizer.from_pretrained("facebook/bart-large-cnn")
 model = AutoModelForSeq2SeqLM.from_pretrained("facebook/bart-large-cnn")

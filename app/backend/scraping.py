@@ -53,7 +53,6 @@ def turn_into_pdf(start, end, doc, title):
 
 def read_file(file_name):
     reader = PdfReader(file_name)
-    number_of_pages = len(reader.pages)
     text = ""
     for page in reader.pages:
         text += page.extract_text()

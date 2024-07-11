@@ -29,5 +29,8 @@ extractive question answering - generate answer from context
 
 question generation: https://huggingface.co/iarfmoose/t5-base-question-generator
 
+questions: https://medium.com/featurepreneur/question-generator-d21265c0648f
+
+
 
 

@@ -18,7 +18,7 @@ def wrap(x):
   return textwrap.fill(x, replace_whitespace=False, fix_sentence_endings=True)
 
 
-def summarize(text, max_input_length=512, max_length=150, min_length=30, do_sample=False):
+def summarize(text, max_input_length=1000, max_length=150, min_length=30, do_sample=False):
     if len(text) > max_input_length:
         text_chunks = textwrap.wrap(text, max_input_length)
         summary = []

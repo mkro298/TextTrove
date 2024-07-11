@@ -4,31 +4,44 @@ from summerization import *
 import pymupdf
 
 
-def seperate_file(file_name):
+def seperate_file(file_name, chapter_name=None):
     doc = pymupdf.open(file_name)
     toc = doc.get_toc()
     print(toc)
-    #extract_chapters(file_name, toc, chapter)
+    extract_chapters(file_name, toc, chapter_name)
 
-def extract_chapters(file_name, toc, chapter):
+def extract_chapters(file_name, toc, chapter_name):
+
+    if (chapter_name == None):
+        read_file(file_name=file_name)
+        return 
+
     doc = pymupdf.open(file_name)
     start = 0
     end = 0
 
+    heir = 0 
+    name = ""
 
+    for i in range(len(toc)):
+        heirarchy = int(toc[i][0])
+        title = toc[i][1]
+        page_num = int(toc[i][2])
 
-    """ for i in range(len(toc)):
-       heirarchy = int(toc[i][0]) #only 1 is a main header 
-       title = toc[i][1]
-       page_num = toc[i][2] #start page number of section 
-       if (heirarchy == 1):
-           #it's the start of a main section 
-           end = page_num - 1
-           turn_into_pdf(start, end, doc, title)
-           start = page_num - 1
-    #reached last chapter 
-    turn_into_pdf(start, len(doc) - 1, doc, title)
-     """
+        if (heir != 0 and heirarchy == heir):
+            #start is already defined 
+            end = page_num - 2 
+            print(start)
+            print(end)
+            print(name)
+            turn_into_pdf(start=start, end=end, doc=doc, title=name)
+            return 
+        elif (title.strip().lower() == chapter_name.strip().lower()):
+            #right chapter 
+            start = page_num - 1
+            name = title
+            heir = heirarchy
+        
 
 def turn_into_pdf(start, end, doc, title):
     chap = pymupdf.open()
@@ -48,7 +61,8 @@ def read_file(file_name):
 
 
 def main():
-    seperate_file("notes.pdf")
+    #seperate_file("notes.pdf", "Gale-Shapley Stable Matching")
+    seperate_file("catSample.pdf")
 
 if __name__=="__main__":
     main()

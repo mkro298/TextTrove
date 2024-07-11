@@ -5,16 +5,16 @@ import pymupdf
 
 
 def seperate_file(file_name, chapter_name=None):
+    print("sep file")
     doc = pymupdf.open(file_name)
     toc = doc.get_toc()
     print(toc)
-    extract_chapters(file_name, toc, chapter_name)
+    return extract_chapters(file_name, toc, chapter_name)
 
 def extract_chapters(file_name, toc, chapter_name):
 
     if (chapter_name == None):
-        read_file(file_name=file_name)
-        return 
+        return read_file(file_name=file_name)
 
     doc = pymupdf.open(file_name)
     start = 0
@@ -34,8 +34,7 @@ def extract_chapters(file_name, toc, chapter_name):
             print(start)
             print(end)
             print(name)
-            turn_into_pdf(start=start, end=end, doc=doc, title=name)
-            return 
+            return turn_into_pdf(start=start, end=end, doc=doc, title=name)
         elif (title.strip().lower() == chapter_name.strip().lower()):
             #right chapter 
             start = page_num - 1
@@ -49,7 +48,7 @@ def turn_into_pdf(start, end, doc, title):
     chap = pymupdf.open()
     chap.insert_pdf(doc, from_page=start, to_page=end)
     chap.save(f"{title}.pdf")
-    read_file(f"{title}.pdf")
+    return read_file(f"{title}.pdf")
 
     
 
@@ -58,12 +57,12 @@ def read_file(file_name):
     text = ""
     for page in reader.pages:
         text += page.extract_text()
-    run(text)
+    return run(text)
 
 
 def main():
     #seperate_file("notes.pdf", "Gale-Shapley Stable Matching")
-    seperate_file("catSample.pdf")
+    seperate_file("app/backend/catSample.pdf")
 
 if __name__=="__main__":
     main()

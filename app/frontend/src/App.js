@@ -17,7 +17,13 @@ function App() {
 
   return (
     <div className="App">
-      
+
+      {(typeof summary.summary == 'undefined') ? (
+        <p>Loading...</p>
+      ) : (
+        <p>{summary.summary}</p>
+      )}
+
     </div>
   );
 }

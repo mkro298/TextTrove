@@ -8,14 +8,14 @@ app = Flask(__name__)
 @app.route("/summ")
 def summary():
     summary = seperate_file("catSample.pdf")
-    print(summary)
-    q = generate(summary=summary)
-    return {"questions": q}
+    return {"summary": summary}
 
 
 @app.route("/quiz")
 def quiz():
-    return 
+    summary = seperate_file("catSample.pdf")
+    q = generate(summary=summary)
+    return {"questions": q}
 
 
 if __name__ == "__main__":

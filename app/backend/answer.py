@@ -36,11 +36,3 @@ def generate(summary):
     
     return sections, questions
 
-def main():
-    summary = seperate_file("app/backend/catSample.pdf")
-    print(summary)
-    q = generate(summary=summary)
-    print(q)
-
-if __name__=="__main__":
-    main()

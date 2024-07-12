@@ -29,7 +29,6 @@ def summarize(text, max_input_length=1000, max_length=150, min_length=30, do_sam
 def run(text):
     wrapped_text = wrap(text)
     sum = summarize(wrapped_text)
-    print("this is in run " + sum)
     return sum
 
 

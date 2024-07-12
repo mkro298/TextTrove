@@ -5,10 +5,8 @@ import pymupdf
 
 
 def seperate_file(file_name, chapter_name=None):
-    print("sep file")
     doc = pymupdf.open(file_name)
     toc = doc.get_toc()
-    print(toc)
     return extract_chapters(file_name, toc, chapter_name)
 
 def extract_chapters(file_name, toc, chapter_name):
@@ -31,9 +29,6 @@ def extract_chapters(file_name, toc, chapter_name):
         if (heir != 0 and heirarchy == heir):
             #start is already defined 
             end = page_num - 2 
-            print(start)
-            print(end)
-            print(name)
             return turn_into_pdf(start=start, end=end, doc=doc, title=name)
         elif (title.strip().lower() == chapter_name.strip().lower()):
             #right chapter 
@@ -58,11 +53,3 @@ def read_file(file_name):
     for page in reader.pages:
         text += page.extract_text()
     return run(text)
-
-
-def main():
-    #seperate_file("notes.pdf", "Gale-Shapley Stable Matching")
-    seperate_file("app/backend/catSample.pdf")
-
-if __name__=="__main__":
-    main()

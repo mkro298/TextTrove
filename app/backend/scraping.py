@@ -12,7 +12,7 @@ def seperate_file(file_name, chapter_name=None):
 def extract_chapters(file_name, toc, chapter_name):
 
     if (chapter_name == None):
-        return read_file(file_name=file_name)
+        return file_name, read_file(file_name=file_name)
 
     doc = pymupdf.open(file_name)
     start = 0
@@ -29,6 +29,7 @@ def extract_chapters(file_name, toc, chapter_name):
         if (heir != 0 and heirarchy == heir):
             #start is already defined 
             end = page_num - 2 
+            print(name)
             return turn_into_pdf(start=start, end=end, doc=doc, title=name)
         elif (title.strip().lower() == chapter_name.strip().lower()):
             #right chapter 
@@ -43,7 +44,7 @@ def turn_into_pdf(start, end, doc, title):
     chap = pymupdf.open()
     chap.insert_pdf(doc, from_page=start, to_page=end)
     chap.save(f"{title}.pdf")
-    return read_file(f"{title}.pdf")
+    return f"{title}.pdf", read_file(f"{title}.pdf")
 
     
 

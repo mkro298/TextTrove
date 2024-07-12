@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 function App() {
   const [summary, setSummary] = useState(""); 
   const [selectedFile, setSelectedFile] = useState(null);
+  const [cutFile, setCutFile] = useState(null); 
   const [questions, setQuestions] = useState([]); 
   const [chapter, setChapter] = useState(""); 
   const [message, setMessage] = useState(""); 
@@ -17,14 +18,11 @@ function App() {
   };
 
   const handleQs = async () => {
-    if (!summary) {
-      alert("Please generate summary first!"); 
-      return; 
-    }
 
     setMessage("Loading..."); 
     const formData = new FormData();
-    formData.append('summary', summary); 
+    //need to get OG file - but might be appended - need to get file from summary 
+    formData.append('text', cutFile); 
 
     try {
       const response = await fetch('/quiz', {
@@ -66,6 +64,7 @@ function App() {
 
       const data = await response.json();
       setSummary(data.summary);
+      setCutFile(data.title); 
     } catch (error) {
       console.error('There was an error uploading the file!', error);
     }

@@ -17,21 +17,21 @@ def summary():
         file_path = file.filename
         file.save(file_path)
         if not chapter:
-            summary = seperate_file(file_path)
+            title, summary = seperate_file(file_path)
         else:
-            summary = seperate_file(file_path, chapter)
-        return {"summary": summary}
+            title, summary = seperate_file(file_path, chapter)
+        return {"summary": summary, "title": title}
 
 
 @app.route("/quiz", methods=['POST'])
 def quiz():
-    summary = request.form.get('summary', '')
+    file_name = request.form.get('text', '')
 
-    if summary:
-        q = generate(summary=summary)
+    if file_name:
+        q = generate(file_name)
         return {"questions": q}
     else:
-        return "no summary"
+        return "no filename"
 
 
 if __name__ == "__main__":

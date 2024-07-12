@@ -11,12 +11,12 @@ aug 4 - aug 10 - fine tuning front end
 aug 11 - aug 14 - deployment + debugging
 
 to do: 
-    save previous summary so it doesn't have to be regenerated 
     split up questions into q and a 
     handle UI for that 
     target different sections of the OG text rather than the summary (generate questions by chunk for the entire thing then finalize a certain number by randomly picking based on how many user wants)
     add section to pick chapter 
     all of the UI stuff + creating pages and components 
+    add a feature to delete file after generated 
 
 
 

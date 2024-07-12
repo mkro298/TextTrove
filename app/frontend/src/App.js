@@ -6,6 +6,7 @@ function App() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [cutFile, setCutFile] = useState(null); 
   const [questions, setQuestions] = useState([]); 
+  const [selectedQ, setSelectedQ] = useState([]); 
   const [chapter, setChapter] = useState(""); 
   const [message, setMessage] = useState(""); 
 
@@ -36,6 +37,8 @@ function App() {
 
       const data = await response.json();
       setQuestions(data.questions);
+      setSelectedQ(data.selected); 
+      console.log(data)
     } catch (error) {
       console.error('There was an error uploading the file!', error);
     }
@@ -91,7 +94,7 @@ function App() {
       <button onClick={handleFileUpload}>Generate Summary</button>
       <button onClick={handleQs}>Generate questions</button>
       {summary ? <p>{summary}</p> : <p>{message}</p>}
-      {questions ? <p>{questions[1]}</p> : <p>{message}</p>}
+      {selectedQ ? <p>{selectedQ}</p> : <p>{message}</p>}
     </div>
   );
 }

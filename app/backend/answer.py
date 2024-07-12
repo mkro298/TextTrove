@@ -2,6 +2,7 @@ from transformers import pipeline
 from scraping import *
 from summerization import *
 from PyPDF2 import PdfReader
+import random
 
 pipe = pipeline("text2text-generation", model="voidful/context-only-question-generator")
 
@@ -25,7 +26,7 @@ def extract_context(file_name):
     for sentence in sentences:
         curr += sentence + ". "
 
-        if (len(curr) > 100):
+        if (len(curr) > 50):
             sections.append(curr)
             curr = ""
 
@@ -41,5 +42,18 @@ def generate(summary):
     for section in sections:
         questions.append(generate_question(section))
     
-    return sections, questions
+    selected_questions = select(questions=questions)
+    
+    return selected_questions, questions
+
+def select(questions):
+    num = int(len(questions) * 0.3)
+    if (num < 1):
+        return questions
+    
+    print(num)
+    
+    selected_questions = random.sample(questions, num)
+
+    return selected_questions
 

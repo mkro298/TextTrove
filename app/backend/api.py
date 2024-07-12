@@ -28,10 +28,11 @@ def quiz():
     file_name = request.form.get('text', '')
 
     if file_name:
-        q = generate(file_name)
-        return {"questions": q}
+        s, q = generate(file_name)
+        return {"questions": q, "selected": s}
     else:
         return "no filename"
+    
 
 @app.route("/delete", methods=['POST'])
 def delete():

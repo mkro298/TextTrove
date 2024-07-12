@@ -2,6 +2,7 @@ import numpy as np
 from PyPDF2 import PdfReader
 from summerization import *
 import pymupdf
+import os 
 
 
 def seperate_file(file_name, chapter_name=None):
@@ -54,3 +55,8 @@ def read_file(file_name):
     for page in reader.pages:
         text += page.extract_text()
     return run(text)
+
+
+def delete_file(file_name):
+    os.remove(file_name)
+    return 

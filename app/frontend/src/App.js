@@ -39,6 +39,18 @@ function App() {
     } catch (error) {
       console.error('There was an error uploading the file!', error);
     }
+
+    try {
+      const response = await fetch('/delete', {
+        method: 'POST',
+        body: formData
+      });
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+    } catch (error) {
+      console.error('Error deleted file', error)
+    }
   }
 
   const handleFileUpload = async () => {
@@ -70,6 +82,7 @@ function App() {
     }
   };
 
+  //choose 50% of questions at random 
   return (
     <div className="App">
       <h1>Uploading Files</h1>

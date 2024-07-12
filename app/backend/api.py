@@ -33,6 +33,13 @@ def quiz():
     else:
         return "no filename"
 
+@app.route("/delete", methods=['POST'])
+def delete():
+    file_name = request.form.get('text', '')
+    
+    if file_name:
+        delete_file(file_name=file_name)
+    return f"Deleted file"
 
 if __name__ == "__main__":
     app.run(debug=True)

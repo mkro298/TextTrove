@@ -18,11 +18,18 @@ def summary():
         return {"summary": summary}
 
 
-@app.route("/quiz")
+@app.route("/quiz", methods=['POST'])
 def quiz():
-    summary = seperate_file("catSample.pdf")
-    q = generate(summary=summary)
-    return {"questions": q}
+    if 'file' not in request.files:
+        return "no file"
+    file = request.files['file']
+
+    if file:
+        file_path = file.filename
+        file.save(file_path)
+        summary = seperate_file(file_path)
+        q = generate(summary=summary)
+        return {"questions": q}
 
 
 if __name__ == "__main__":

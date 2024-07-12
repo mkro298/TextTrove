@@ -11,11 +11,8 @@ def summary():
         return "no file"
     file = request.files['file']
 
-    print("DID NOT CHECK IF FILE IS THERE")
-
     if file:
         file_path = file.filename
-        print("FILE NAME: " + file_path)
         file.save(file_path)
         summary = seperate_file(file_path)
         return {"summary": summary}

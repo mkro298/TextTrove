@@ -1,14 +1,24 @@
-from flask import Flask
+from flask import Flask, request
 from scraping import *
 from answer import *
 from summerization import * 
 
 app = Flask(__name__)
 
-@app.route("/summ")
+@app.route("/summ", methods=['POST'])
 def summary():
-    summary = seperate_file("catSample.pdf")
-    return {"summary": summary}
+    if 'file' not in request.files:
+        return "no file"
+    file = request.files['file']
+
+    print("DID NOT CHECK IF FILE IS THERE")
+
+    if file:
+        file_path = file.filename
+        print("FILE NAME: " + file_path)
+        file.save(file_path)
+        summary = seperate_file(file_path)
+        return {"summary": summary}
 
 
 @app.route("/quiz")

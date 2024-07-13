@@ -4,9 +4,9 @@ scope: site where user can upload their textbook PDF and get a chapter-by-chapte
 
 timeline: deadline aug 20 
 
-july 14 - july 19 -  trouble shooting + debugging backend 
-july 20 - aug 3 - front end 
-aug 4 - aug 10 - fine tuning front end 
+july 14 - july 19 - front end 
+july 20 - aug 3 - fine tuning front end 
+aug 4 - aug 10 - handling user error + testing + user feedback 
 aug 11 - aug 14 - deployment + debugging
 
 to do: 

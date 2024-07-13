@@ -10,7 +10,6 @@ aug 4 - aug 10 - fine tuning front end
 aug 11 - aug 14 - deployment + debugging
 
 to do: 
-    split up questions into q and a 
     handle UI for that 
     all of the UI stuff + creating pages and components 
     error messages (user errors)

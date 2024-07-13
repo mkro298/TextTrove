@@ -94,7 +94,15 @@ function App() {
       <button onClick={handleFileUpload}>Generate Summary</button>
       <button onClick={handleQs}>Generate questions</button>
       {summary ? <p>{summary}</p> : <p>{message}</p>}
-      {selectedQ ? <p>{selectedQ}</p> : <p>{message}</p>}
+      {selectedQ.length > 0 ? (
+        <ul>
+          {selectedQ.map((q, index) => (
+            <p key={index}>
+              {q[1]}
+            </p>
+          ))}
+        </ul>
+      ) : <p>{message}</p>}
     </div>
   );
 }

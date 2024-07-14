@@ -17,3 +17,10 @@ to do:
     handle UI for that 
     all of the UI stuff + creating pages and components 
     error messages (user errors)
+
+
+UI components: 
+    home page with explanations 
+    button on home to lead to actual stuff 
+    upload + summerize section 
+    generate flashcards button - take to another screen with option to flip flashcards for question + answer 

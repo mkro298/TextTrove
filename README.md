@@ -6,10 +6,10 @@ annotations + download?
 
 timeline: deadline aug 20 
 
-july 14 - july 19 - front end 
-july 20 - aug 3 - fine tuning front end 
-aug 4 - aug 10 - handling user error + testing + user feedback 
-aug 11 - aug 14 - deployment + debugging
+july 14 - july 22 - front end 
+july 23 - july 30 - fine tuning front end + making edits 
+aug 1 - aug 10 - handling user error + testing + user feedback 
+aug 11 - aug 20 - deployment + debugging
 
 to do: 
     handle search for textbook - when user types stuff into chapter - drop down to pick chapter 

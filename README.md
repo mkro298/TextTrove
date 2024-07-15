@@ -16,11 +16,9 @@ to do:
     delete the original file too 
     handle UI for that 
     all of the UI stuff + creating pages and components 
-    error messages (user errors)
+    error messages (user errors) - when text is too long 
 
 
 UI components: 
-    home page with explanations 
-    button on home to lead to actual stuff 
-    upload + summerize section 
-    generate flashcards button - take to another screen with option to flip flashcards for question + answer 
+    home page - place to enter pdf on left (chapter dropdown under), box w/ summary on right 
+    generate flashcards button under in the middle - take to another screen with option to flip flashcards for question + answer 

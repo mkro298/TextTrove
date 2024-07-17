@@ -9,6 +9,7 @@ function Home() {
   const [selectedQ, setSelectedQ] = useState([]); 
   const [chapter, setChapter] = useState(""); 
   const [message, setMessage] = useState(""); 
+  const [sMessage, setSMessage] = useState(""); 
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -20,9 +21,8 @@ function Home() {
 
   const handleQs = async () => {
 
-    setMessage("Loading..."); 
+    setSMessage("Loading..."); 
     const formData = new FormData();
-    //need to get OG file - but might be appended - need to get file from summary 
     formData.append('text', cutFile); 
 
     try {
@@ -85,25 +85,29 @@ function Home() {
     }
   };
 
-  //choose 50% of questions at random 
   return (
-    <div className="App">
-      <h1>Uploading Files</h1>
+  <div className="App">
+  <h1>TextTrove</h1>
+  <div className="content-container">
+    <div className="input-container">
       <input type="file" onChange={handleFileChange} />
-      <input type="text" onChange={handleTextChange}/>
+      <input type="text" onChange={handleTextChange} />
       <button onClick={handleFileUpload}>Generate Summary</button>
-      <button onClick={handleQs}>Generate questions</button>
+      <button onClick={handleQs}>Generate Questions</button>
+    </div>
+    <div className="summary-container">
       {summary ? <p>{summary}</p> : <p>{message}</p>}
       {selectedQ.length > 0 ? (
         <ul>
           {selectedQ.map((q, index) => (
-            <p key={index}>
-              {q[1]}
-            </p>
+            <p key={index}>{q[1]}</p>
           ))}
         </ul>
-      ) : <p>{message}</p>}
+      ) : <p>{sMessage}</p>}
     </div>
+  </div>
+</div>
+  
   );
 }
 

@@ -42,5 +42,13 @@ def delete():
         delete_file(file_name=file_name)
     return f"Deleted file"
 
+@app.route("/chapters", methods=['POST'])
+def chapters():
+    file_name = request.files['file']
+
+    if file_name:
+        toc = get_toc(file_name=file_name)
+        return {"chapters" : toc} 
+
 if __name__ == "__main__":
     app.run(debug=True)

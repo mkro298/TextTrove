@@ -6,9 +6,13 @@ import os
 
 
 def seperate_file(file_name, chapter_name=None):
+    toc = get_toc(file_name=file_name)
+    return extract_chapters(file_name, toc, chapter_name)
+
+def get_toc(file_name):
     doc = pymupdf.open(file_name)
     toc = doc.get_toc()
-    return extract_chapters(file_name, toc, chapter_name)
+    return toc
 
 def extract_chapters(file_name, toc, chapter_name):
 

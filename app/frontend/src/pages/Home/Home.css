@@ -18,11 +18,8 @@
   }
   
   .summary-container {
-    display: flex;
-    flex-direction: column;
     max-width: 500px;
     width: 100%; 
-    word-wrap: break-word;
   }
   
   input[type="file"],

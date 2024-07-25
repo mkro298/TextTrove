@@ -12,7 +12,6 @@ aug 11 - aug 20 - deployment + debugging
 
 to do: 
 - loading screens/animations 
-- handle UI for cards 
 - handle UI for summary 
 - aesthetics + blurbs (instructions)
 - error messages (user errors) - when text is too long 

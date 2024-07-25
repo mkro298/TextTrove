@@ -11,7 +11,7 @@ def summary():
         return "no file"
     file = request.files['file']
 
-    chapter = request.form.get('string', '')
+    chapter = request.form.get('chapter', '')
 
     if file:
         file_path = file.filename
@@ -25,10 +25,18 @@ def summary():
 
 @app.route("/quiz", methods=['POST'])
 def quiz():
-    file_name = request.form.get('text', '')
+    file = request.files['file']
+    chapter = request.form.get('chapter', '')
 
-    if file_name:
-        s, q = generate(file_name)
+    if file:
+        file_path = file.filename
+        file.save(file_path)
+        if chapter: 
+            title = seperate_file(file_name=file_path, chapter_name=chapter, ret=False); 
+            q, s = generate(title); 
+        else:
+            seperate_file(file_name=file_path, ret=False); 
+            q, s = generate(file_path); 
         return {"questions": q, "selected": s}
     else:
         return "no filename"
@@ -36,11 +44,25 @@ def quiz():
 
 @app.route("/delete", methods=['POST'])
 def delete():
-    file_name = request.form.get('text', '')
+    file = request.files['file']
+    chapter = request.form.get('chapter', '')
+    chapter_name = f"{chapter}.pdf"
     
-    if file_name:
-        delete_file(file_name=file_name)
+    if file:
+        delete_file(file_name=file.filename)
+    if chapter_name:
+        delete_file(chapter_name)
     return f"Deleted file"
+
+@app.route("/chapters", methods=['POST'])
+def chapters():
+    file = request.files['file']
+
+    if file:
+        file_path = file.filename
+        file.save(file_path)
+        toc = get_toc(file_name=file_path)
+        return {"chapters" : toc} 
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,28 +1,33 @@
-import React, { useState } from 'react'
+import React, { act, useState } from 'react'
 import "./Flash.css"
+import {Cards} from "../../components/index.js"
 
 const Flash = ({selectedQ}) => {
   console.log(selectedQ)
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const flip = (index) => {
-    setActiveIndex(activeIndex === index ? null : index);
+  const prev = () => {
+    if (activeIndex > 0) {
+      setActiveIndex(activeIndex - 1)
+    }
   }
+
+  const next = () => {
+    if (activeIndex < selectedQ.length - 1) {
+      setActiveIndex(activeIndex + 1)
+    }
+  }
+
   return (
     <>
     <p>flash</p>
      <div className="summary-container">
-            <ul>
-              {selectedQ.map((q, index) => (
-                <li key={index}>
-                        <button onClick={() => flip(index)}>
-                        {activeIndex !== index && <p>{q[1]}</p>}
-                        {activeIndex === index && <p>{q[0]}</p>}
-                        </button>
-                    </li>
-              ))}
-            </ul>
-        </div>
+      <button onClick={prev}>Prev</button>
+      <div className='card'>
+      <Cards question={selectedQ[activeIndex][1]} answer={selectedQ[activeIndex][0]} />
+      </div>
+      <button onClick={next}>Next</button>
+    </div>
     </>
   )
 }

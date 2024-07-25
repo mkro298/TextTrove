@@ -6,7 +6,6 @@ annotations + download?
 
 timeline: deadline aug 20 
 
-july 14 - july 22 - front end 
 july 23 - july 30 - fine tuning front end + making edits 
 aug 1 - aug 10 - handling user error + testing + user feedback 
 aug 11 - aug 20 - deployment + debugging

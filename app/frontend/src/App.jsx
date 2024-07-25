@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {Home, Flash} from "./pages/index"; 
 import {
   BrowserRouter as Router, 
@@ -8,17 +8,24 @@ import {
 } from "react-router-dom"; 
 
 const App = () => {
+
+  const[flashcards, setFlashcards] = useState([]); 
+
+  useEffect(() => {
+    console.log(flashcards)
+  }, [flashcards, setFlashcards])
+
   return (
     <div className="App">
       <Router>
         <Routes>
           <Route
             exact path = "/"
-            element={<Home />}
+            element={<Home setSelectedQ={setFlashcards}/>}
           />
           <Route
             exact path = "/flashcards"
-            element={<Flash />}
+            element={<Flash selectedQ={flashcards}/>}
           />
         </Routes>
       </Router>

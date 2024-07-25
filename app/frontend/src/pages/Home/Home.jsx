@@ -1,16 +1,16 @@
 import './Home.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Search } from '../../components/index';
 
-function Home() {
+function Home({setSelectedQ}) {
+  const navigate = useNavigate();
   const [summary, setSummary] = useState(""); 
   const [selectedFile, setSelectedFile] = useState(null);
   const [cutFile, setCutFile] = useState(null);
   const [questions, setQuestions] = useState([]);
-  const [selectedQ, setSelectedQ] = useState([]);
   const [chapter, setChapter] = useState(""); 
   const [chapterList, setChapterList] = useState([]); 
-  const [filteredChapters, setFilteredChapters] = useState([]);
   const [message, setMessage] = useState(""); 
   const [sMessage, setSMessage] = useState(""); 
 
@@ -61,7 +61,6 @@ function Home() {
       const data = await response.json();
       setQuestions(data.questions);
       setSelectedQ(data.selected); 
-      console.log(data)
     } catch (error) {
       setSMessage('There was an error uploading the file!'); 
       console.error('There was an error uploading the file!', error);
@@ -78,6 +77,9 @@ function Home() {
     } catch (error) {
       console.error('Error deleted file', error)
     }
+
+    navigate('/flashcards');
+
   }
 
   const handleFileUpload = async () => {
@@ -132,18 +134,9 @@ function Home() {
           <Search chapters={chapterList} setChapter={setChapter}/>
           <button onClick={handleFileUpload}>Generate Summary</button>
           <button onClick={handleQs}>Generate Questions</button>
-        </div>
-        <div className="summary-container">
+          <div className="summary-container">
           {summary ? <p>{summary}</p> : <p>{message}</p>}
-          {selectedQ.length > 0 ? (
-            <ul>
-              {selectedQ.map((q, index) => (
-                <p key={index}>{q[1]}</p>
-              ))}
-            </ul>
-          ) : (
-            <p>{sMessage}</p>
-          )}
+        </div>
         </div>
       </div>
     </div>

@@ -12,11 +12,7 @@ aug 1 - aug 10 - handling user error + testing + user feedback
 aug 11 - aug 20 - deployment + debugging
 
 to do: 
-- handle UI for that 
-- all of the UI stuff + creating pages and components 
+- handle UI for cards 
+- handle UI for summary 
+- aesthetics + blurbs (instructions)
 - error messages (user errors) - when text is too long 
-
-
-UI components: 
-- home page - place to enter pdf on left (chapter dropdown under), box w/ summary on right 
-- generate flashcards button under in the middle - take to another screen with option to flip flashcards for question + answer 

@@ -11,7 +11,7 @@ def summary():
         return "no file"
     file = request.files['file']
 
-    chapter = request.form.get('string', '')
+    chapter = request.form.get('chapter', '')
 
     if file:
         file_path = file.filename
@@ -29,7 +29,14 @@ def quiz():
     chapter = request.form.get('chapter', '')
 
     if file:
-        s, q = generate(file_name)
+        file_path = file.filename
+        file.save(file_path)
+        if chapter: 
+            title = seperate_file(file_name=file_path, chapter_name=chapter, ret=False); 
+            q, s = generate(title); 
+        else:
+            seperate_file(file_name=file_path, ret=False); 
+            q, s = generate(file_path); 
         return {"questions": q, "selected": s}
     else:
         return "no filename"
@@ -37,10 +44,14 @@ def quiz():
 
 @app.route("/delete", methods=['POST'])
 def delete():
-    file_name = request.form.get('text', '')
+    file = request.files['file']
+    chapter = request.form.get('chapter', '')
+    chapter_name = f"{chapter}.pdf"
     
-    if file_name:
-        delete_file(file_name=file_name)
+    if file:
+        delete_file(file_name=file.filename)
+    if chapter_name:
+        delete_file(chapter_name)
     return f"Deleted file"
 
 @app.route("/chapters", methods=['POST'])

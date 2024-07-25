@@ -38,7 +38,6 @@ function Home() {
       setMessage("There was an error uploading the file!"); 
       console.error('There was an error uploading the file!', error);
     }
-
   };
 
 
@@ -90,7 +89,7 @@ function Home() {
     setMessage("Loading..."); 
     const formData = new FormData();
     formData.append('file', selectedFile);
-    formData.append('string', chapter); 
+    formData.append('chapter', chapter[1]); 
 
     try {
       const response = await fetch('/summ', {
@@ -109,6 +108,18 @@ function Home() {
     } catch (error) {
       setMessage("There was an error uploading the file!"); 
       console.error('There was an error uploading the file!', error);
+    }
+
+    try {
+      const response = await fetch('/delete', {
+        method: 'POST',
+        body: formData
+      });
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+    } catch (error) {
+      console.error('Error deleted file', error)
     }
   };
 

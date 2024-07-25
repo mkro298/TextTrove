@@ -12,8 +12,6 @@ aug 1 - aug 10 - handling user error + testing + user feedback
 aug 11 - aug 20 - deployment + debugging
 
 to do: 
-- update questions so it directly cuts the file 
-- delete the original file too 
 - handle UI for that 
 - all of the UI stuff + creating pages and components 
 - error messages (user errors) - when text is too long 

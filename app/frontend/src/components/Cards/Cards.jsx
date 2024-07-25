@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import "./Cards.css"
 
-const Cards = ({question, answer}) => {
-  const [isFlipped, setIsFlipped] = useState(false); 
+const Cards = ({question, answer, setIsFlipped, isFlipped}) => {
 
   const handleFlip = () => {
     setIsFlipped(!isFlipped);

@@ -12,6 +12,7 @@ aug 1 - aug 10 - handling user error + testing + user feedback
 aug 11 - aug 20 - deployment + debugging
 
 to do: 
+- update questions so it directly cuts the file 
 - handle search for textbook - when user types stuff into chapter - drop down to pick chapter
 - delete the original file too 
 - handle UI for that 

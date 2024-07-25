@@ -14,21 +14,39 @@ function Home() {
   const [message, setMessage] = useState(""); 
   const [sMessage, setSMessage] = useState(""); 
 
-  useEffect(() => {
-    setFilteredChapters(
-      chapterList.filter(ch => ch.toLowerCase().includes(chapter.toLowerCase()))
-    );
-  }, [chapter, chapterList]);
-
-  const handleFileChange = (event) => {
+  const handleFileChange = async (event) => {
     setSelectedFile(event.target.files[0]);
+
+    const formData = new FormData();
+    formData.append('file', event.target.files[0]);
+
+    try {
+      const response = await fetch('/chapters', {
+        method: 'POST',
+        body: formData
+      });
+
+      if (!response.ok) {
+        setMessage("Network response was not ok"); 
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      console.log(data); 
+      setChapterList(data.chapters);
+    } catch (error) {
+      setMessage("There was an error uploading the file!"); 
+      console.error('There was an error uploading the file!', error);
+    }
+
   };
 
 
   const handleQs = async () => {
     setSMessage("Loading..."); 
     const formData = new FormData();
-    formData.append('text', cutFile); 
+    formData.append('file', selectedFile); 
+    formData.append('chapter', chapter[1])
 
     try {
       const response = await fetch('/quiz', {
@@ -100,7 +118,7 @@ function Home() {
       <div className="content-container">
         <div className="input-container">
           <input type="file" onChange={handleFileChange} />
-          <Search chapters={chapterList}/>
+          <Search chapters={chapterList} setChapter={setChapter}/>
           <button onClick={handleFileUpload}>Generate Summary</button>
           <button onClick={handleQs}>Generate Questions</button>
         </div>

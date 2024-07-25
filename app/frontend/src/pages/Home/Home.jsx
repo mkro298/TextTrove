@@ -91,7 +91,7 @@ function Home({setSelectedQ}) {
     setMessage("Loading..."); 
     const formData = new FormData();
     formData.append('file', selectedFile);
-    formData.append('chapter', chapter[1]); 
+    formData.append('chapter', chapter); 
 
     try {
       const response = await fetch('/summ', {

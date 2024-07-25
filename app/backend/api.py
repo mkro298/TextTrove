@@ -10,13 +10,12 @@ def summary():
     if 'file' not in request.files:
         return "no file"
     file = request.files['file']
-
     chapter = request.form.get('chapter', '')
-
+    print("this is the chapter" + chapter); 
     if file:
         file_path = file.filename
         file.save(file_path)
-        if not chapter:
+        if chapter == "":
             title, summary = seperate_file(file_path)
         else:
             title, summary = seperate_file(file_path, chapter)

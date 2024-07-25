@@ -31,12 +31,12 @@ def quiz():
     if file:
         file_path = file.filename
         file.save(file_path)
-        if chapter: 
+        if chapter == "": 
+            seperate_file(file_name=file_path, ret=False); 
+            q, s = generate(file_path);  
+        else:
             title = seperate_file(file_name=file_path, chapter_name=chapter, ret=False); 
             q, s = generate(title); 
-        else:
-            seperate_file(file_name=file_path, ret=False); 
-            q, s = generate(file_path); 
         return {"questions": q, "selected": s}
     else:
         return "no filename"

@@ -24,8 +24,8 @@ const Search = ({chapters, setChapter}) => {
   }
 
   const pickChapter = (index) => {
-    setChapter(filteredChapters[index]); 
-    console.log(filteredChapters[index]); 
+    setChapter(filteredChapters[index][1]); 
+    console.log(filteredChapters[index][1]); 
   }
   return (
     <div className='search'>

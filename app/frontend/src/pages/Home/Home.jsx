@@ -2,6 +2,7 @@ import './Home.css';
 import React, { useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search } from '../../components/index';
+import { Oval } from 'react-loader-spinner';
 
 function Home({setSelectedQ}) {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ function Home({setSelectedQ}) {
   const [chapter, setChapter] = useState(""); 
   const [chapterList, setChapterList] = useState([]); 
   const [message, setMessage] = useState(""); 
-  const [sMessage, setSMessage] = useState(""); 
+  const [loading, setLoading] = useState(false); 
 
   const handleFileChange = async (event) => {
     setSelectedFile(event.target.files[0]);
@@ -42,7 +43,7 @@ function Home({setSelectedQ}) {
 
 
   const handleQs = async () => {
-    setSMessage("Loading..."); 
+    setLoading(true); 
     const formData = new FormData();
     formData.append('file', selectedFile)
     formData.append('chapter', chapter)
@@ -54,7 +55,6 @@ function Home({setSelectedQ}) {
       });
 
       if (!response.ok) {
-        setSMessage("Network response was not ok"); 
         throw new Error('Network response was not ok');
       }
 
@@ -62,7 +62,6 @@ function Home({setSelectedQ}) {
       setQuestions(data.questions);
       setSelectedQ(data.selected); 
     } catch (error) {
-      setSMessage('There was an error uploading the file!'); 
       console.error('There was an error uploading the file!', error);
     }
 
@@ -140,6 +139,20 @@ function Home({setSelectedQ}) {
           <div className="summary-container">
           {summary ? <p>{summary}</p> : <p>{message}</p>}
           </div>
+          {loading ? (<div className="modal-overlay">
+            <div className="spinner-container">
+        <Oval
+          height={80}
+          width={80}
+          color="grey"
+          visible={loading}
+          ariaLabel='oval-loading'
+          secondaryColor="gray"
+          strokeWidth={2}
+          strokeWidthSecondary={2}
+        />
+      </div>
+    </div>) : (<div></div>)}
       </div>
     </div>
   );

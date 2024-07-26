@@ -8,7 +8,6 @@ function Home({setSelectedQ}) {
   const navigate = useNavigate();
   const [summary, setSummary] = useState(""); 
   const [selectedFile, setSelectedFile] = useState(null);
-  const [cutFile, setCutFile] = useState(null);
   const [questions, setQuestions] = useState([]);
   const [chapter, setChapter] = useState(""); 
   const [chapterList, setChapterList] = useState([]); 
@@ -87,6 +86,7 @@ function Home({setSelectedQ}) {
       return;
     }
 
+
     setMessage("Loading..."); 
     const formData = new FormData();
     formData.append('file', selectedFile);
@@ -105,7 +105,6 @@ function Home({setSelectedQ}) {
 
       const data = await response.json();
       setSummary(data.summary);
-      setCutFile(data.title); 
     } catch (error) {
       setMessage("There was an error uploading the file!"); 
       console.error('There was an error uploading the file!', error);

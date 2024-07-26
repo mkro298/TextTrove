@@ -8,7 +8,6 @@ function Home({setSelectedQ}) {
   const navigate = useNavigate();
   const [summary, setSummary] = useState(""); 
   const [selectedFile, setSelectedFile] = useState(null);
-  const [questions, setQuestions] = useState([]);
   const [chapter, setChapter] = useState(""); 
   const [chapterList, setChapterList] = useState([]); 
   const [message, setMessage] = useState(""); 
@@ -58,7 +57,6 @@ function Home({setSelectedQ}) {
       }
 
       const data = await response.json();
-      setQuestions(data.questions);
       setSelectedQ(data.selected); 
     } catch (error) {
       console.error('There was an error uploading the file!', error);

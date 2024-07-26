@@ -4,4 +4,4 @@ scope: site where user can upload their textbook PDF and get a chapter-by-chapte
 
 timeline: deadline aug 20 
 
-deploy backend through AWS EC2 and front end or netlify/heroku combo 
+deploy backend through AWS EC2

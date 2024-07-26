@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import { FaSearch } from "react-icons/fa";
 import './Search.css';
 
 const Search = ({ chapters, setChapter }) => {
   const [query, setQuery] = useState(""); 
   const [filteredChapters, setFilteredChapters] = useState([]);
+
 
   const fetchData = async (value) => {
     if (value.trim() === "") {
@@ -25,8 +26,10 @@ const Search = ({ chapters, setChapter }) => {
   }
 
   const pickChapter = (index) => {
+    setQuery(filteredChapters[index][1]); 
     setChapter(filteredChapters[index][1]);
     console.log(filteredChapters[index][1]);
+    setFilteredChapters([]);
   }
 
   return (

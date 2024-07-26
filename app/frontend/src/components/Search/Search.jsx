@@ -1,5 +1,4 @@
 import React, { useState} from 'react';
-import { FaSearch } from "react-icons/fa";
 import './Search.css';
 
 const Search = ({ chapters, setChapter }) => {
@@ -35,7 +34,6 @@ const Search = ({ chapters, setChapter }) => {
   return (
     <div className='search-container'>
       <div className='search-bar'>
-        <FaSearch id="search-icon" />
         <input 
           className='search-input'
           placeholder="Type here to search for a chapter..."

@@ -127,7 +127,9 @@ function Home({setSelectedQ}) {
 
   return (
     <div className="App">
-      <h1>TextTrove</h1>
+     <div className='text-flash'>
+      <p>Text Trove</p>
+      </div>
       <div className="content-container">
         <div className="input-container">
           <input type="file" onChange={handleFileChange} />

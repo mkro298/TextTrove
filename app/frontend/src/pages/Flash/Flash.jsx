@@ -26,7 +26,7 @@ const Flash = ({selectedQ}) => {
     <div className='text-flash'>
       <p>Flash Cards</p>
     </div>
-     <div className="summary-container">
+     <div className="card-container">
       <button onClick={prev}>Previous</button>
       <div className='card'>
       <Cards question={selectedQ[activeIndex][1]} answer={selectedQ[activeIndex][0]} setIsFlipped={setIsFlipped} isFlipped={isFlipped} />

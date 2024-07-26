@@ -1,4 +1,4 @@
-.summary-container {
+.card-container {
     display: flex;
     flex-direction: row;
     padding-top: 100px;
@@ -6,7 +6,7 @@
     align-items: center;
   }
 
-.summary-container button {
+.card-container button {
     padding: 20px; 
     margin-left: 100px;
     margin-right: 100px;
@@ -23,7 +23,7 @@
     border-radius: 12px; 
 }
   
-.summary-container button:hover {
+.card-container button:hover {
     background-color: white; 
     color: black; 
     border: 2px solid #62adc2; 

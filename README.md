@@ -1,6 +1,6 @@
 # TextTrove 
 
-A site where user can upload their textbook PDF and get a summary and flash cards on each selected chapter. 
+A study tool used to upload textbook PDFs and generate summaries and flashcards on selected chapters. 
 
 ## Site Setup 
 Run the following command to install all dependencies. 

@@ -131,7 +131,7 @@ function Home({setSelectedQ}) {
           <input type="file" onChange={handleFileChange} />
           <Search chapters={chapterList} setChapter={setChapter}/>
           <button onClick={handleFileUpload}>Generate Summary</button>
-          <button onClick={handleQs}>Generate Questions</button>
+          <button onClick={handleQs}>Generate Flashcards</button>
         </div>
           <div className="summary-container">
           {summary ? <p>{summary}</p> : <p>{message}</p>}

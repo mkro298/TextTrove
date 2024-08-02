@@ -5,6 +5,10 @@ from summerization import *
 
 app = Flask(__name__)
 
+@app.route("/")
+def home(): 
+    return f"home page"
+
 @app.route("/summ", methods=['POST'])
 def summary():
     if 'file' not in request.files:

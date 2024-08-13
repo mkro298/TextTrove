@@ -35,3 +35,7 @@ Home page with text pdf upload + summerization feature:
 
 ![img/summ.png](https://github.com/mkro298/TextTrove/blob/main/img/summ.png?raw=true)
 
+Flashcard with flippable Q and A feature: 
+
+![img/q.png](https://github.com/mkro298/TextTrove/blob/main/img/q.png?raw=true)
+![img/a.png](https://github.com/mkro298/TextTrove/blob/main/img/a.png?raw=true)

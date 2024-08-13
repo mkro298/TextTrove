@@ -28,3 +28,10 @@ npm run start
 ```
 
 This will take you to the running site. 
+
+## Site Demo
+
+Home page with text pdf upload + summerization feature: 
+
+![img/summ.png](https://github.com/mkro298/TextTrove/blob/main/img/summ.png?raw=true)
+
